@@ -1,0 +1,41 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+secrets/
+
+# Dependencies and generated application output
+node_modules/
+dist/
+build/
+coverage/
+.vite/
+.cache/
+
+# Local tooling and operating-system files
+.DS_Store
+Thumbs.db
+*.log
+.vscode/settings.json
+
+# Local Supabase state and generated files
+.temp/
+supabase/.branches/
+supabase/.temp/
+
+# Arduino and editor-generated files
+*.elf
+*.bin
+*.hex
+*.eep
+*.map
+*.o
+*.d
+*.pyc
+__pycache__/
+
+# Keep directory placeholders while they are empty
+!.gitkeep

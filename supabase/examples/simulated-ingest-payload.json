@@ -1,0 +1,17 @@
+{
+  "simulation_only": true,
+  "device_key": "simulated-device-001",
+  "device_sequence_no": 42,
+  "measured_at": "2026-10-14T09:00:00Z",
+  "firmware_version": "local-development-only",
+  "payload_version": "1",
+  "wifi_rssi": -61,
+  "readings": [
+    {"sensor_type": "temperature_c", "raw_value": 28.4, "calibrated_value": null, "unit": "°C", "quality_status": "ok", "error_code": null, "metadata": {}},
+    {"sensor_type": "humidity_percent", "raw_value": 64.0, "calibrated_value": null, "unit": "%", "quality_status": "ok", "error_code": null, "metadata": {}},
+    {"sensor_type": "moisture_raw_adc", "raw_value": 1700, "calibrated_value": null, "unit": "adc_counts", "quality_status": "ok", "error_code": null, "metadata": {}},
+    {"sensor_type": "gas_raw_adc", "raw_value": 920, "calibrated_value": null, "unit": "adc_counts", "quality_status": "ok", "error_code": null, "metadata": {}},
+    {"sensor_type": "light_lux", "raw_value": 115.2, "calibrated_value": null, "unit": "lux", "quality_status": "ok", "error_code": null, "metadata": {}},
+    {"sensor_type": "sound_raw_adc", "raw_value": 640, "calibrated_value": null, "unit": "adc_counts", "quality_status": "ok", "error_code": null, "metadata": {}}
+  ]
+}
