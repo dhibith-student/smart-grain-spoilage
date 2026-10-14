@@ -31,8 +31,19 @@ export function createApp({ supabase, deviceTokens, dashboardConfig, corsOrigins
     if (typeof username !== 'string' || typeof password !== 'string') {
       return res.status(400).json({ error: 'username and password are required' });
     }
-    const token = dashboardAuth.login(username, password);
-    if (!token) return res.status(401).json({ error: 'Invalid dashboard credentials' });
+    // Usernames are identifiers, so tolerate accidental surrounding whitespace.
+    // Passwords remain byte-for-byte exact and are never logged or normalized.
+    const candidateUsername = username.trim();
+    const token = dashboardAuth.login(candidateUsername, password);
+    if (!token) {
+      console.warn('dashboard_login_failed', {
+        username_present: candidateUsername.length > 0,
+        password_present: password.length > 0,
+        username_length: candidateUsername.length,
+        password_length: password.length
+      });
+      return res.status(401).json({ error: 'Invalid dashboard credentials' });
+    }
     return res.json({ authenticated: true, token });
   });
 

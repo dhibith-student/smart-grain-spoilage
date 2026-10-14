@@ -111,6 +111,19 @@ test('dashboard login returns a session token', async () => {
   assert.equal(typeof response.body.token, 'string');
 });
 
+test('dashboard login trims username whitespace but preserves password exactness', async () => {
+  const { app } = createTestApp();
+  const accepted = await request(app)
+    .post('/api/v1/auth/login')
+    .send({ username: '  admin  ', password: 'dashboard-test-password' });
+  assert.equal(accepted.status, 200);
+
+  const rejected = await request(app)
+    .post('/api/v1/auth/login')
+    .send({ username: 'admin', password: ' dashboard-test-password' });
+  assert.equal(rejected.status, 401);
+});
+
 test('ingestion rejects missing or invalid device credentials', async () => {
   const { app } = createTestApp();
   const response = await request(app).post('/api/v1/ingest').send(payload);
